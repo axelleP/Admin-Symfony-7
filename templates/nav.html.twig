@@ -1,13 +1,13 @@
-<aside class="col-12 col-sm-5 col-md-4 col-lg-4 col-xl-3 col-xxl-2 app-bg-blue text-center shadow pt-5">
+<aside class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-3 col-xxl-2 app-bg-blue text-center shadow pt-5">
     <img id="logo" class="me-2" src="{{ asset('img/logo.png') }}" alt="logo">
     <span class="fs-5 fw-semibold">{{ appName }}</span>
 
     <nav class="pt-5">
         <ul class="fs-5">
             <li class="list-unstyled"><a class="{% if app.request.pathInfo == path('app_general_page_list') %}active{% endif %} link text-reset" href="{{ path('app_general_page_list') }}">Pages générales</a></li>
-            <li class="list-unstyled"><a class="link text-reset" href="#">Catégories</a></li>
-            <li class="list-unstyled"><a class="link text-reset" href="#">Articles</a></li>
-            <li class="list-unstyled"><a class="link text-reset" href="#">Commentaires</a></li>
+            <li class="list-unstyled"><a class="{% if app.request.pathInfo == path('app_category_list') %}active{% endif %} link text-reset" href="{{ path('app_category_list') }}">Catégories</a></li>
+            <li class="list-unstyled"><a class="{% if app.request.pathInfo == path('app_article_list') %}active{% endif %} link text-reset" href="{{ path('app_article_list') }}">Articles</a></li>
+            <li class="list-unstyled"><a class="{% if app.request.pathInfo == path('app_comment_list') %}active{% endif %} link text-reset" href="{{ path('app_comment_list') }}">Commentaires</a></li>
             <br>
             <li class="list-unstyled"><a class="link text-reset" href="{{ path('app_login') }}">Se déconnecter</a></li>
         </ul>

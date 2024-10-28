@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ parent() }}Liste catégories{% endblock %}
+
+{% block body %}
+    <table class="table table-responsive table-bordered w-auto">
+        <thead class="table-secondary">
+            <tr>
+                <th scope="col">Code</th>
+                <th scope="col">Position</th>
+                <th scope="col">Nom FR</th>
+                <th scope="col">Nom EN</th>
+                <th scope="col">-</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>CAT1</td>
+                <td class="text-center">1</td>
+                <td>Catégorie1</td>
+                <td>Category1</td>
+                <td>
+                    <form method="post" action="{{ path('app_category_list') }}" onsubmit="return confirm('Confirmez-vous la suppression ?');">
+                        <input type="hidden" name="_token" value="{{ csrf_token('delete1') }}">
+                        <button class="btn btn-link" type="submit"><img class="icon-action-size" src="{{ asset('img/btn-delete.svg') }}" alt="btn-delete"/></button>
+                    </form>
+                </td>
+            </tr>
+            <tr>
+                <td>CAT2</td>
+                <td class="text-center">2</td>
+                <td>Catégorie2</td>
+                <td>Category2</td>
+                <td>
+                    <form method="post" action="{{ path('app_category_list') }}" onsubmit="return confirm('Confirmez-vous la suppression ?');">
+                        <input type="hidden" name="_token" value="{{ csrf_token('delete2') }}">
+                        <button class="btn btn-link" type="submit"><img class="icon-action-size" src="{{ asset('img/btn-delete.svg') }}" alt="btn-delete"/></button>
+                    </form>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <a class="btn-update btn mt-2 rounded-3" href="{{ path('app_category_list') }}">Modifier</a>
+{% endblock %}
+
+
+
+

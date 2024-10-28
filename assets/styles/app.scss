@@ -6,10 +6,40 @@
 }
 
 .app-bg-blue {
-    background-color: variables.$main-bg-color;
+    background-color: variables.$main-color;
 }
 
 .icon-action-size {
     width: 22px;
     height: 22px;
+}
+
+.btn-update {
+    background-color: darken(variables.$main-color, 50%);
+    color: white;
+
+    &:hover {
+        background-color: darken(variables.$main-color, 60%);
+        color: white;
+    }
+}
+
+.btn-add {
+    background-color: variables.$green-bg-color;
+    color: white;
+
+    &:hover {
+        background-color: darken(variables.$green-bg-color, 10%);
+        color: white;
+    }
+}
+
+.btn-back {
+    background-color: variables.$gray-bg-color;
+    color: white;
+
+    &:hover {
+        background-color: darken(variables.$gray-bg-color, 10%);
+        color: white;
+    }
 }

@@ -11,10 +11,10 @@ header {
 }
 
 #btn-login {
-    background-color: darken(variables.$main-bg-color, 50%);
+    background-color: darken(variables.$main-color, 50%);
     color: white;
 
     &:hover {
-        background-color: darken(variables.$main-bg-color, 60%);
+        background-color: darken(variables.$main-color, 60%);
     }
 }

@@ -5,6 +5,7 @@
         <title>{% block title %}{{ appName }} - {% endblock %}</title>
         <link rel="shorcut icon" type="image/png" href="{{ asset('img/logo.png') }}">
         {% block stylesheets %}
+            <link rel="stylesheet" href="{{ asset('styles/nav.scss') }}">
         {% endblock %}
 
         {% block javascripts %}
@@ -12,7 +13,7 @@
         {% endblock %}
     </head>
     <body>
-        <main class="container-fluid min-vh-100 row">
+        <main class="container-fluid min-vh-100 row px-0 mx-0">
             {% include 'nav.html.twig' %}
             <section class="col-auto p-5">
                 {% block body %}{% endblock %}

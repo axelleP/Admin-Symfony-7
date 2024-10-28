@@ -3,7 +3,7 @@
 @mixin underline {
     text-decoration-line: underline;
     text-decoration-style: solid;
-    text-decoration-color: darken(variables.$main-bg-color, 50%);
+    text-decoration-color: darken(variables.$main-color, 50%);
     text-decoration-thickness: 4px;
 }
 

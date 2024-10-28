@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ parent() }}Vue commentaires{% endblock %}
+
+{% block body %}
+    <table class="table table-responsive table-bordered w-auto">
+        <tbody>
+            <tr>
+                <th class="table-secondary">Date création</td>
+                <td>25/10/2024</td>
+            </tr>
+            <tr>
+                <th class="table-secondary">Pseudo</td>
+                <td>Pseudo1</td>
+            </tr>
+            <tr>
+                <th class="table-secondary">Email</td>
+                <td>test@gmail.com</td>
+            </tr>
+            <tr>
+                <th class="table-secondary">Commentaire</td>
+                <td>Commentaire</td>
+            </tr>
+        </tbody>
+    </table>
+    <a class="btn-back btn mt-2 rounded-3" href="{{ path('app_comment_list') }}">Retour</a>
+{% endblock %}
+
+
+
+

@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ parent() }}Liste commentaires{% endblock %}
+
+{% block body %}
+    <table class="table table-responsive table-bordered w-auto">
+        <thead class="table-secondary">
+            <tr>
+                <th scope="col">Date création</th>
+                <th scope="col">Pseudo</th>
+                <th scope="col">Email</th>
+                <th scope="col">Commentaire</th>
+                <th scope="col">-</th>
+                <th scope="col">-</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="text-center">25/10/2024</td>
+                <td>Pseudo1</td>
+                <td>test@gmail.com</td>
+                <td>Com1...</td>
+                <td><a class="btn btn-link" href="{{ path('app_comment_view') }}"><img class="icon-action-size" src="{{ asset('img/btn-see.svg') }}" alt="btn-see"/></a></td>
+                <td>
+                    <form method="post" action="{{ path('app_article_list') }}" onsubmit="return confirm('Confirmez-vous la suppression ?');">
+                        <input type="hidden" name="_token" value="{{ csrf_token('delete1') }}">
+                        <button class="btn btn-link" type="submit"><img class="icon-action-size" src="{{ asset('img/btn-delete.svg') }}" alt="btn-delete"/></button>
+                    </form>
+                </td>
+            </tr>
+            <tr>
+                <td class="text-center">25/10/2024</td>
+                <td>Pseudo2</td>
+                <td>test@gmail.com</td>
+                <td>Com2...</td>
+                <td><a class="btn btn-link" href="{{ path('app_comment_view') }}"><img class="icon-action-size" src="{{ asset('img/btn-see.svg') }}" alt="btn-see"/></a></td>
+                <td>
+                    <form method="post" action="{{ path('app_article_list') }}" onsubmit="return confirm('Confirmez-vous la suppression ?');">
+                        <input type="hidden" name="_token" value="{{ csrf_token('delete2') }}">
+                        <button class="btn btn-link" type="submit"><img class="icon-action-size" src="{{ asset('img/btn-delete.svg') }}" alt="btn-delete"/></button>
+                    </form>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+{% endblock %}
+
+
+
+
