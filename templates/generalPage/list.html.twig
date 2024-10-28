@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ parent() }}Liste pages générales{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('styles/nav.scss') }}">
+{% endblock %}
+
+{% block body %}
+    <table class="table table-responsive table-bordered w-auto">
+        <thead class="table-secondary">
+            <tr>
+                <th scope="col">Page</th>
+                <th scope="col">-</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>A propos</td>
+                <td><a href=""><img class="icon-action-size" src="{{ asset('img/btn-edit.svg') }}" alt="btn-edit"></a></td>
+            </tr>
+            <tr>
+                <td>Mentions légales</td>
+                <td><a href=""><img class="icon-action-size" src="{{ asset('img/btn-edit.svg') }}" alt="btn-edit"></a></td>
+            </tr>
+        </tbody>
+    </table>
+{% endblock %}
+
+
+
+

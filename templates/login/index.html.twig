@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{{ appName }}</title>
+        <link rel="shorcut icon" type="image/png" href="{{ asset('img/logo.png') }}">
+        <link rel="stylesheet" href="{{ asset('styles/login.scss') }}">
+        {{ importmap('app') }}
+    </head>
+    <body>
+        <main class="container-fluid min-vh-100 app-bg-blue px-0">
+            <header class="mx-auto d-flex justify-content-center align-items-center">
+                <img id="logo" class="me-2" src="{{ asset('img/logo.png') }}" alt="logo">
+                <span class="fs-4 fw-semibold">{{ appName }}</span>
+            </header>
+        
+            <section id="form-login" class="mx-auto d-flex flex-column justify-content-center border shadow bg-white mt-5">
+                <h1 class="h3 text-center">Connexion</h1>
+                <form class="mt-5 fs-5">
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="text" class="form-control" id="email">
+                    </div>
+                    <div class="mb-3">
+                        <label for="password" class="form-label">Mot de passe</label>
+                        <input type="password" class="form-control" id="password">
+                    </div>
+                    <button id="btn-login" class="btn mx-auto d-block mt-5 fs-5 rounded-3" type="submit">Se connecter</button>
+                </form>
+            </section>
+        </main>
+    </body>
+</html>

@@ -1,0 +1,20 @@
+@use 'variables';
+
+header {
+    padding-top: 5%;
+}
+
+#form-login {
+    padding: 3%;
+    max-width: 600px;
+    max-height: 450px;
+}
+
+#btn-login {
+    background-color: darken(variables.$main-bg-color, 50%);
+    color: white;
+
+    &:hover {
+        background-color: darken(variables.$main-bg-color, 60%);
+    }
+}
