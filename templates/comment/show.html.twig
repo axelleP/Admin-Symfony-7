@@ -7,19 +7,23 @@
         <tbody>
             <tr>
                 <th class="table-secondary">Date création</td>
-                <td>25/10/2024</td>
+                <td>{{ comment.createdAt|date('d/m/Y') }}</td>
+            </tr>
+            <tr>
+                <th class="table-secondary">Article</td>
+                <td>{{ comment.article.titleFr }}</td>
             </tr>
             <tr>
                 <th class="table-secondary">Pseudo</td>
-                <td>Pseudo1</td>
+                <td>{{ comment.pseudo }}</td>
             </tr>
             <tr>
                 <th class="table-secondary">Email</td>
-                <td>test@gmail.com</td>
+                <td>{{ comment.email }}</td>
             </tr>
             <tr>
                 <th class="table-secondary">Commentaire</td>
-                <td>Commentaire</td>
+                <td>{{ comment.comment|raw }}</td>
             </tr>
         </tbody>
     </table>

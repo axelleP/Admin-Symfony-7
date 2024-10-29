@@ -11,24 +11,17 @@
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td>A propos</td>
-                <td>
-                    <form method="post" action="{{ path('app_general_page_list') }}">
-                        <input type="hidden" name="_token" value="{{ csrf_token('edit1') }}">
-                        <button class="btn btn-link" type="submit"><img class="icon-action-size" src="{{ asset('img/btn-edit.svg') }}" alt="btn-edit"/></button>
-                    </form>
-                </td>
-            </tr>
-            <tr>
-                <td>Mentions légales</td>
-                <td>
-                    <form method="post" action="{{ path('app_general_page_list') }}">
-                        <input type="hidden" name="_token" value="{{ csrf_token('edit2') }}">
-                        <button class="btn btn-link" type="submit"><img class="icon-action-size" src="{{ asset('img/btn-edit.svg') }}" alt="btn-edit"/></button>
-                    </form>
-                </td>
-            </tr>
+            {% for page in pages %}
+                <tr>
+                    <td>{{ page.code|trans({}, 'page') }}</td>
+                    <td>
+                        <form method="post" action="{{ path('app_general_page_list') }}">
+                            <input type="hidden" name="_token" value="{{ csrf_token('edit' ~ page.id) }}">
+                            <button class="btn btn-link" type="submit"><img class="icon-action-size" src="{{ asset('img/btn-edit.svg') }}" alt="btn-edit"/></button>
+                        </form>
+                    </td>
+                </tr>
+            {% endfor %}
         </tbody>
     </table>
 {% endblock %}
