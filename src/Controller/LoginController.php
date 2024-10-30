@@ -11,8 +11,6 @@ class LoginController extends AbstractController
     #[Route('/', name: 'app_login')]
     public function index(): Response
     {
-        return $this->render('login/index.html.twig', [
-            'appName' => $_ENV["APP_NAME"]
-        ]);
+        return $this->render('login/index.html.twig');
     }
 }

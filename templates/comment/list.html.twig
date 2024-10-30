@@ -23,9 +23,9 @@
                     <td>{{ comment.pseudo }}</td>
                     <td>{{ comment.email }}</td>
                     <td>{{ comment.comment|u.truncate(20, '...')|raw }}</td>
-                    <td><a class="btn btn-link" href="{{ path('app_comment_show', {'id': comment.id}) }}"><img class="icon-action-size" src="{{ asset('img/btn-see.svg') }}" alt="btn-see"/></a></td>
+                    <td><a class="btn btn-link" href="{{ path('app_comment_show', {id: comment.id}) }}"><img class="icon-action-size" src="{{ asset('img/btn-see.svg') }}" alt="btn-see"/></a></td>
                     <td>
-                        <form method="post" action="{{ path('app_comment_list') }}" onsubmit="return confirm('Confirmez-vous la suppression ?');">
+                        <form method="post" action="{{ path('app_comment_delete', {id: comment.id}) }}" onsubmit="return confirm('Confirmez-vous la suppression ?');">
                             <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ comment.id) }}">
                             <button class="btn btn-link" type="submit"><img class="icon-action-size" src="{{ asset('img/btn-delete.svg') }}" alt="btn-delete"/></button>
                         </form>

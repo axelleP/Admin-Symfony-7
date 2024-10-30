@@ -3,6 +3,8 @@
 {% block title %}{{ parent() }}Liste catégories{% endblock %}
 
 {% block body %}
+    <div>Il y a {{ categories|length }} catégories.</div>
+
     <table class="table table-responsive table-bordered w-auto">
         <thead class="table-secondary">
             <tr>
@@ -21,7 +23,7 @@
                     <td>{{ category.nameFr }}</td>
                     <td>{{ category.nameEn }}</td>
                     <td>
-                        <form method="post" action="{{ path('app_category_list') }}" onsubmit="return confirm('Confirmez-vous la suppression ?');">
+                        <form method="post" action="{{ path('app_category_delete', {id: category.id}) }}" onsubmit="return confirm('Confirmez-vous la suppression de cette catégorie et de ses {{ category.articles|length }} article(s) ?');">
                             <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ category.id) }}">
                             <button class="btn btn-link" type="submit"><img class="icon-action-size" src="{{ asset('img/btn-delete.svg') }}" alt="btn-delete"/></button>
                         </form>
@@ -30,6 +32,19 @@
             {% endfor %}
         </tbody>
     </table>
+
+    <nav aria-label="pagination">
+        <ul class="pagination">
+            <li class="page-item {% if (previous < 0) %}disabled{% endif %}">
+                <a class="page-link" href="{{ path('app_category_list', { offset: previous }) }}" tabindex="-1">Précédent</a>
+            </li>
+            <li class="page-item"><a class="page-link">{{ currentPage }}</a></li>
+            <li class="page-item {% if (next >= categories|length) %}disabled{% endif %}">
+                <a class="page-link" href="{{ path('app_category_list', { offset: next }) }}">Suivant</a>
+            </li>
+        </ul>
+    </nav>
+
     <a class="btn-update btn mt-2 rounded-3" href="{{ path('app_category_list') }}">Modifier</a>
 {% endblock %}
 

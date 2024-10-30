@@ -39,7 +39,6 @@ class CategoryFixtures extends Fixture implements FixtureGroupInterface
             $category->setNameFr($data['nameFr']);
             $category->setNameEn($data['nameEn']);
             $manager->persist($category);
-
         }
 
         $manager->flush();

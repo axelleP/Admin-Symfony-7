@@ -15,7 +15,6 @@ class GeneralPageController extends AbstractController
     public function list(PageRepository $pageRepository): Response
     {
         return $this->render('generalPage/list.html.twig', [
-            'appName' => $_ENV['APP_NAME'],
             'pages' => $pageRepository->findAll()
         ]);
     }

@@ -5,6 +5,8 @@ namespace App\Entity;
 use App\Repository\ArticleRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 
 #[ORM\Entity(repositoryClass: ArticleRepository::class)]
 class Article
@@ -17,6 +19,9 @@ class Article
     #[ORM\ManyToOne]
     #[ORM\JoinColumn(nullable: false)]
     private ?Category $category = null;
+
+    #[ORM\OneToMany(targetEntity: Comment::class, mappedBy: 'article', cascade: ['remove'])]
+    private Collection $comments;
 
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
     private ?\DateTimeInterface $created_at = null;
@@ -35,6 +40,11 @@ class Article
 
     #[ORM\Column(length: 100)]
     private ?string $image = null;
+
+    public function __construct()
+    {
+        $this->comments = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -123,5 +133,10 @@ class Article
         $this->image = $image;
 
         return $this;
+    }
+
+    public function getComments(): Collection
+    {
+        return $this->comments;
     }
 }

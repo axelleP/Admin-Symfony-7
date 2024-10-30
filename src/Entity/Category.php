@@ -5,6 +5,8 @@ namespace App\Entity;
 use App\Repository\CategoryRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 
 #[ORM\Entity(repositoryClass: CategoryRepository::class)]
 class Category
@@ -13,6 +15,9 @@ class Category
     #[ORM\GeneratedValue]
     #[ORM\Column]
     private ?int $id = null;
+
+    #[ORM\OneToMany(targetEntity: Article::class, mappedBy: 'category', cascade: ['remove'])]
+    private Collection $articles;
 
     #[ORM\Column(length: 30)]
     private ?string $code = null;
@@ -25,6 +30,11 @@ class Category
 
     #[ORM\Column(length: 50)]
     private ?string $name_en = null;
+
+    public function __construct()
+    {
+        $this->articles = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -77,5 +87,10 @@ class Category
         $this->name_en = $name_en;
 
         return $this;
+    }
+
+    public function getArticles(): Collection
+    {
+        return $this->articles;
     }
 }

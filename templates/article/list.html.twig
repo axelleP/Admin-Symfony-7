@@ -26,7 +26,7 @@
                         </form>
                     </td>
                     <td>
-                        <form method="post" action="{{ path('app_article_list') }}" onsubmit="return confirm('Confirmez-vous la suppression ?');">
+                        <form method="post" action="{{ path('app_article_delete', {id: article.id}) }}" onsubmit="return confirm('Confirmez-vous la suppression de l\'article et de ses {{ article.comments|length }} commentaires(s) ?');">
                             <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ article.id) }}">
                             <button class="btn btn-link" type="submit"><img class="icon-action-size" src="{{ asset('img/btn-delete.svg') }}" alt="btn-delete"/></button>
                         </form>
