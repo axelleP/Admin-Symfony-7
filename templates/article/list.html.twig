@@ -3,12 +3,15 @@
 {% block title %}{{ parent() }}Liste articles{% endblock %}
 
 {% block body %}
+    <div>Il y a {{ articles|length }} articles.</div>
+
     <table class="table table-responsive table-bordered w-auto">
         <thead class="table-secondary">
             <tr>
                 <th scope="col">Catégorie</th>
                 <th scope="col">Date création</th>
                 <th scope="col">Titre</th>
+                <th scope="col">-</th>
                 <th scope="col">-</th>
                 <th scope="col">-</th>
             </tr>
@@ -19,6 +22,7 @@
                     <td>{{ article.category.nameFr }}</td>
                     <td class="text-center">{{ article.createdAt|date('d/m/Y') }}</td>
                     <td>{{ article.titleFr }}</td>
+                    <td><a class="btn btn-link" href="{{ path('app_article_show', {id: article.id}) }}"><img class="icon-action-size" src="{{ asset('img/btn-see.svg') }}" alt="btn-see"/></a></td>
                     <td>
                         <form method="post" action="{{ path('app_article_list') }}">
                             <input type="hidden" name="_token" value="{{ csrf_token('edit' ~ article.id) }}">
@@ -35,6 +39,11 @@
             {% endfor %}
         </tbody>
     </table>
+
+    {% if previous >= 0 or next < articles|length %}
+        {% include '_paginate.html.twig' with {'previous': previous, 'next': next, 'currentPage': currentPage, 'path': 'app_article_list', 'paginator': articles} %}
+    {% endif %}
+
     <a class="btn-add btn mt-2 rounded-3" href="{{ path('app_article_list') }}">Ajouter</a>
 {% endblock %}
 

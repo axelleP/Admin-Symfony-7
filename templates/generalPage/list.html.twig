@@ -8,18 +8,15 @@
             <tr>
                 <th scope="col">Page</th>
                 <th scope="col">-</th>
+                <th scope="col">-</th>
             </tr>
         </thead>
         <tbody>
             {% for page in pages %}
                 <tr>
                     <td>{{ page.code|trans({}, 'page') }}</td>
-                    <td>
-                        <form method="post" action="{{ path('app_general_page_list') }}">
-                            <input type="hidden" name="_token" value="{{ csrf_token('edit' ~ page.id) }}">
-                            <button class="btn btn-link" type="submit"><img class="icon-action-size" src="{{ asset('img/btn-edit.svg') }}" alt="btn-edit"/></button>
-                        </form>
-                    </td>
+                    <td><a class="btn btn-link" href="{{ path('app_general_page_show', {id: page.id}) }}"><img class="icon-action-size" src="{{ asset('img/btn-see.svg') }}" alt="btn-see"/></a></td>
+                    <td><a class="btn btn-link"  href="{{ path('app_general_page_edit', {id: page.id}) }}"><img class="icon-action-size" src="{{ asset('img/btn-edit.svg') }}" alt="btn-edit"/></a></td>
                 </tr>
             {% endfor %}
         </tbody>

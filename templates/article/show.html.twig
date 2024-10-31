@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ parent() }}Vue article{% endblock %}
+
+{% block body %}
+    <table class="table table-responsive table-bordered w-auto">
+        <tbody>
+            <tr>
+                <th class="table-secondary">Catégorie</td>
+                <td>{{ article.category.nameFr }}</td>
+            </tr>
+            <tr>
+                <th class="table-secondary">Date création</td>
+                <td>{{ article.createdAt|date('d/m/Y') }}</td>
+            </tr>
+            <tr>
+                <th class="table-secondary">Titre Fr</td>
+                <td>{{ article.titleFr }}</td>
+            </tr>
+            <tr>
+                <th class="table-secondary">Titre En</td>
+                <td>{{ article.titleEn }}</td>
+            </tr>
+            <tr>
+                <th class="table-secondary">Contenu Fr</td>
+                <td>{{ article.contentFr|nl2br|raw }}</td>
+            </tr>
+            <tr>
+                <th class="table-secondary">Contenu En</td>
+                <td>{{ article.contentEn|nl2br|raw }}</td>
+            </tr>
+            <tr>
+                <th class="table-secondary">Image</td>
+                    <td><img src="{{ asset(article.fullPathImage) }}"></td>
+            </tr>
+        </tbody>
+    </table>
+    <a class="btn-back btn mt-2 rounded-3" href="{{ path('app_article_list') }}">Retour</a>
+{% endblock %}
+
+
+
+

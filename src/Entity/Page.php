@@ -6,6 +6,8 @@ use App\Repository\PageRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
+use Symfony\Component\Validator\Constraints as Assert;
+
 #[ORM\Entity(repositoryClass: PageRepository::class)]
 class Page
 {
@@ -18,9 +20,13 @@ class Page
     private ?string $code = null;
 
     #[ORM\Column(type: Types::TEXT)]
+    #[Assert\Type('string')]
+    #[Assert\NotBlank(message: 'not_blank')]
     private ?string $content_fr = null;
 
     #[ORM\Column(type: Types::TEXT)]
+    #[Assert\Type('string')]
+    #[Assert\NotBlank(message: 'not_blank')]
     private ?string $content_en = null;
 
     public function getId(): ?int

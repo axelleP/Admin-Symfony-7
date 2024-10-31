@@ -139,4 +139,9 @@ class Article
     {
         return $this->comments;
     }
+
+    public function getFullPathImage(): string
+    {
+        return 'uploads/articles/' . $this->getImage();
+    }
 }

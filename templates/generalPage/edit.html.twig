@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ parent() }}Formulaire page générale{% endblock %}
+
+{% block body %}
+    {{ form_start(form) }}
+        {{ form_errors(form) }}
+
+        <div class="form-group">
+            {{ form_label(form.code) }}
+            {{ form_widget(form.code, {'attr': {'class': 'form-control'}}) }}
+            <div class="text-danger">{{ form_errors(form.code) }}</div>
+        </div>
+        <div class="form-group">
+            {{ form_label(form.content_fr, null, {'label_attr': {'for': 'contentFr'}}) }}
+            {{ form_widget(form.content_fr, {'attr': {'class': 'form-control', 'id': 'contentFr'}}) }}
+            <div class="text-danger">{{ form_errors(form.content_fr) }}</div>
+        </div>
+        <div class="form-group">
+            {{ form_label(form.content_en, null, {'label_attr': {'for': 'contentEn'}}) }}
+            {{ form_widget(form.content_en, {'attr': {'class': 'form-control', 'id': 'contentEn'}}) }}
+            <div class="text-danger">{{ form_errors(form.content_en) }}</div>
+        </div>
+        <br/>
+        <a class="btn-cancel btn mt-2 rounded-3" href="{{ path('app_general_page_list') }}">Annuler</a>
+        <button type="submit" class="btn-update btn mt-2 rounded-3">Modifier</button>
+    {{ form_end(form) }}
+{% endblock %}

@@ -16,10 +16,24 @@ use App\Entity\Article;
 class ArticleController extends AbstractController
 {
     #[Route('/list', name: 'app_article_list')]
-    public function list(ArticleRepository $articleRepository): Response
+    public function list(Request $request, ArticleRepository $articleRepository): Response
     {
+        $offset = max(0, $request->query->getInt('offset', 0));
+        $paginator = $articleRepository->getArticlePaginator($offset);
+
         return $this->render('article/list.html.twig', [
-            'articles' => $articleRepository->findAll()
+            'articles' => $paginator,
+            'previous' => $offset - ArticleRepository::PAGINATOR_PER_PAGE,
+            'next' => min(count($paginator), $offset + ArticleRepository::PAGINATOR_PER_PAGE),
+            'currentPage' => ($offset / ArticleRepository::PAGINATOR_PER_PAGE) + 1
+        ]);
+    }
+
+    #[Route('/show/{id<\d+>}', name: 'app_article_show')]
+    public function show(Article $article): Response
+    {
+        return $this->render('article/show.html.twig', [
+            'article' => $article,
         ]);
     }
 

@@ -3,6 +3,8 @@
 {% block title %}{{ parent() }}Liste commentaires{% endblock %}
 
 {% block body %}
+    <div>Il y a {{ comments|length }} commentaires.</div>
+
     <table class="table table-responsive table-bordered w-auto">
         <thead class="table-secondary">
             <tr>
@@ -34,6 +36,10 @@
             {% endfor %}
         </tbody>
     </table>
+
+    {% if previous >= 0 or next < comments|length %}
+        {% include '_paginate.html.twig' with {'previous': previous, 'next': next, 'currentPage': currentPage, 'path': 'app_comment_list', 'paginator': comments} %}
+    {% endif %}
 {% endblock %}
 
 

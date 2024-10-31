@@ -16,11 +16,16 @@ use App\Repository\CommentRepository;
 class CommentController extends AbstractController
 {
     #[Route('/list', name: 'app_comment_list')]
-    public function list(CommentRepository $commentRepository): Response
+    public function list(Request $request, CommentRepository $commentRepository): Response
     {
+        $offset = max(0, $request->query->getInt('offset', 0));
+        $paginator = $commentRepository->getCommentPaginator($offset);
+
         return $this->render('comment/list.html.twig', [
-            'appName' => $_ENV["APP_NAME"],
-            'comments' => $commentRepository->findAll()
+            'comments' => $paginator,
+            'previous' => $offset - CommentRepository::PAGINATOR_PER_PAGE,
+            'next' => min(count($paginator), $offset + CommentRepository::PAGINATOR_PER_PAGE),
+            'currentPage' => ($offset / CommentRepository::PAGINATOR_PER_PAGE) + 1
         ]);
     }
 

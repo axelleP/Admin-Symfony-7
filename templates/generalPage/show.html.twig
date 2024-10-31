@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ parent() }}Vue page général{% endblock %}
+
+{% block body %}
+    <table class="table table-responsive table-bordered w-auto">
+        <tbody>
+            <tr>
+                <th class="table-secondary">Nom</td>
+                <td>{{ page.code|trans({}, 'page') }}</td>
+            </tr>
+            <tr>
+                <th class="table-secondary">Contenu FR</td>
+                <td>{{ page.contentFr|nl2br|raw }}</td>
+            </tr>
+            <tr>
+                <th class="table-secondary">Contenu EN</td>
+                <td>{{ page.contentEn|nl2br|raw }}</td>
+            </tr>
+        </tbody>
+    </table>
+    <a class="btn-back btn mt-2 rounded-3" href="{{ path('app_general_page_list') }}">Retour</a>
+{% endblock %}
+
+
+
+
