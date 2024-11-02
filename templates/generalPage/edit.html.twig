@@ -22,7 +22,7 @@
             <div class="text-danger">{{ form_errors(form.content_en) }}</div>
         </div>
         <br/>
-        <a class="btn-cancel btn mt-2 rounded-3" href="{{ path('app_general_page_list') }}">Annuler</a>
-        <button type="submit" class="btn-update btn mt-2 rounded-3">Modifier</button>
+        <a class="btn-cancel btn mt-2 rounded-3" href="{{ path('app_general_page_list') }}">{{ 'cancel'|trans({}, 'actions') }}</a>
+        <button type="submit" class="btn-update btn mt-2 rounded-3">{{ 'edit'|trans({}, 'actions') }}</button>
     {{ form_end(form) }}
 {% endblock %}

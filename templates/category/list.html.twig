@@ -8,18 +8,18 @@
     <table class="table table-responsive table-bordered w-auto">
         <thead class="table-secondary">
             <tr>
-                <th scope="col">Code</th>
-                <th scope="col">Position</th>
-                <th scope="col">Nom FR</th>
-                <th scope="col">Nom EN</th>
+                <th scope="col">{{ 'position'|trans({}, 'category') }}</th>
+                <th scope="col">{{ 'code'|trans({}, 'category') }}</th>
+                <th scope="col">{{ 'name_fr'|trans({}, 'category') }}</th>
+                <th scope="col">{{ 'name_en'|trans({}, 'category') }}</th>
                 <th scope="col">-</th>
             </tr>
         </thead>
         <tbody>
             {% for category in categories %}
                 <tr>
-                    <td>{{ category.code }}</td>
                     <td class="text-center">{{ category.position }}</td>
+                    <td>{{ category.code }}</td>
                     <td>{{ category.nameFr }}</td>
                     <td>{{ category.nameEn }}</td>
                     <td>
@@ -37,7 +37,27 @@
         {% include '_paginate.html.twig' with {'previous': previous, 'next': next, 'currentPage': currentPage, 'path': 'app_category_list', 'paginator': categories} %}
     {% endif %}
 
-    <a class="btn-update btn mt-2 rounded-3" href="{{ path('app_category_list') }}">Modifier</a>
+    <a class="btn-update btn mt-2 rounded-3" href="{{ path('app_category_edit') }}">{{ 'edit'|trans({}, 'actions') }}</a>
+
+    <div class="mt-5">
+        <div>Ajouter une catégorie :</div>
+        {{ form_start(form) }}
+            <div class="form-group">
+                {{ form_widget(form.code, {'attr': {'class': 'form-control', 'placeholder': 'code'|trans({}, 'category')}}) }}
+                <div class="text-danger">{{ form_errors(form.code) }}</div>
+            </div>
+            <div class="form-group">
+                {{ form_widget(form.name_fr, {'attr': {'class': 'form-control', 'id': 'name_fr', 'placeholder': 'name_fr'|trans({}, 'category')}}) }}
+                <div class="text-danger">{{ form_errors(form.name_fr) }}</div>
+            </div>
+            <div class="form-group">
+                {{ form_widget(form.name_en, {'attr': {'class': 'form-control', 'id': 'name_en', 'placeholder': 'name_en'|trans({}, 'category')}}) }}
+                <div class="text-danger">{{ form_errors(form.name_en) }}</div>
+            </div>
+            <br/>
+            <button type="submit" class="btn-add btn rounded-3 align-self-start">{{ 'add'|trans({}, 'actions') }}</button>
+        {{ form_end(form) }}
+    </div>
 {% endblock %}
 
 

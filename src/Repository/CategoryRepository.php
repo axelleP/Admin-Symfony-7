@@ -31,4 +31,13 @@ class CategoryRepository extends ServiceEntityRepository
 
         return new Paginator($query);
     }
+
+    public function getLastCategory(): ?Category
+    {
+        return $this->createQueryBuilder('c')
+            ->orderBy('c.position', 'DESC')
+            ->setMaxResults(1)
+            ->getQuery()
+            ->getOneOrNullResult();
+    }
 }

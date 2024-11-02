@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ parent() }}Formulaire catégorie{% endblock %}
+
+{% block body %}
+    {{ form_start(form) }}
+        {% for category in form.categories %}
+            <div class="d-flex gap-2 my-2">
+                <div class="form-group">
+                    {{ form_widget(category.position, {'attr': {'class': 'form-control', 'placeholder': 'position'|trans({}, 'category')}}) }}
+                    <div class="text-danger">{{ form_errors(category.position) }}</div>
+                </div>
+                <div class="form-group">
+                    {{ form_widget(category.code, {'attr': {'class': 'form-control', 'placeholder': 'code'|trans({}, 'category')}}) }}
+                    <div class="text-danger">{{ form_errors(category.code) }}</div>
+                </div>
+                <div class="form-group">
+                    {{ form_widget(category.name_fr, {'attr': {'class': 'form-control', 'id': 'name_fr', 'placeholder': 'name_fr'|trans({}, 'category')}}) }}
+                    <div class="text-danger">{{ form_errors(category.name_fr) }}</div>
+                </div>
+                <div class="form-group">
+                    {{ form_widget(category.name_en, {'attr': {'class': 'form-control', 'id': 'name_en', 'placeholder': 'name_en'|trans({}, 'category')}}) }}
+                    <div class="text-danger">{{ form_errors(category.name_en) }}</div>
+                </div>
+            </div>
+            {% endfor %}
+        <a class="btn-cancel btn rounded-3" href="{{ path('app_category_list') }}">{{ 'cancel'|trans({}, 'actions') }}</a>
+        <button class="btn btn-update rounded-3 align-self-start" type="submit">{{ 'save'|trans({}, 'actions') }}</button>
+    {{ form_end(form) }}
+{% endblock %}

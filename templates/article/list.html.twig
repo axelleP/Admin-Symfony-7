@@ -44,7 +44,7 @@
         {% include '_paginate.html.twig' with {'previous': previous, 'next': next, 'currentPage': currentPage, 'path': 'app_article_list', 'paginator': articles} %}
     {% endif %}
 
-    <a class="btn-add btn mt-2 rounded-3" href="{{ path('app_article_list') }}">Ajouter</a>
+    <a class="btn-add btn mt-2 rounded-3" href="{{ path('app_article_list') }}">{{ 'add'|trans({}, 'actions') }}</a>
 {% endblock %}
 
 

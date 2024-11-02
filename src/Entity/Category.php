@@ -8,6 +8,8 @@ use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 
+use Symfony\Component\Validator\Constraints as Assert;
+
 #[ORM\Entity(repositoryClass: CategoryRepository::class)]
 class Category
 {
@@ -20,15 +22,36 @@ class Category
     private Collection $articles;
 
     #[ORM\Column(length: 30)]
+    #[Assert\Type('string')]
+    #[Assert\NotBlank(message: 'not_blank')]
+    #[Assert\Length(
+        max: 30,
+        maxMessage: 'category.code.length',
+    )]
     private ?string $code = null;
 
     #[ORM\Column(type: Types::SMALLINT)]
+    #[Assert\Type('integer')]
+    #[Assert\NotBlank(message: 'not_blank', groups: ['update'])]
+    #[Assert\Positive(message: 'positive')]
     private ?int $position = null;
 
     #[ORM\Column(length: 50)]
+    #[Assert\Type('string')]
+    #[Assert\NotBlank(message: 'not_blank')]
+    #[Assert\Length(
+        max: 50,
+        maxMessage: 'category.name.length',
+    )]
     private ?string $name_fr = null;
 
     #[ORM\Column(length: 50)]
+    #[Assert\Type('string')]
+    #[Assert\NotBlank(message: 'not_blank')]
+    #[Assert\Length(
+        max: 50,
+        maxMessage: 'category.name.length',
+    )]
     private ?string $name_en = null;
 
     public function __construct()

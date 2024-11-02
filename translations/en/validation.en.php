@@ -8,6 +8,14 @@ return [
     'json' => 'The field must be a valid Json.',
     'email' => 'The field must be a valid email.',
     'decimal_max_2' => 'The field must be a number with a maximum of two decimal places.',
+    'category' => [
+        'code' => [
+            'length' => 'The code must not exceed 30 characters.'
+        ],
+        'name' => [
+            'length' => 'The name must not exceed 50 characters.'
+        ]
+    ],
     'article' => [
         'title_fr' => [
             'length' => 'The title must not exceed 50 characters.'
