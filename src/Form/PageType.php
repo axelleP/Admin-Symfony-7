@@ -27,21 +27,22 @@ class PageType extends AbstractType
 
         $builder
             ->add('code', TextType::class, [
-                'label' => 'Nom',
+                'label' => $this->translator->trans('name', [], 'page'),
                 'data' => $this->translator->trans($page->getCode(), [], 'page'),
                 'disabled' => true,
+                'attr' => ['class' => 'form-control'],
             ])
             ->add('content_fr', TextareaType::class, [
+                'label' => $this->translator->trans('content_fr', [], 'page'),
                 'required' => true,
-                'label' => 'Contenu FR',
-                'attr' => ['rows' => 5, 'cols' => 40],
-                'empty_data' => ''
+                'empty_data' => '',
+                'attr' => ['class' => 'form-control', 'rows' => 5, 'cols' => 40],
             ])
             ->add('content_en', TextareaType::class, [
+                'label' => $this->translator->trans('content_en', [], 'page'),
                 'required' => true,
-                'label' => 'Contenu EN',
-                'attr' => ['rows' => 5, 'cols' => 40],
-                'empty_data' => ''
+                'empty_data' => '',
+                'attr' => ['class' => 'form-control', 'rows' => 5, 'cols' => 40],
             ])
         ;
     }

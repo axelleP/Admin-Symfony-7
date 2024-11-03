@@ -7,19 +7,19 @@
         {% for category in form.categories %}
             <div class="d-flex gap-2 my-2">
                 <div class="form-group">
-                    {{ form_widget(category.position, {'attr': {'class': 'form-control', 'placeholder': 'position'|trans({}, 'category')}}) }}
+                    {{ form_widget(category.position) }}
                     <div class="text-danger">{{ form_errors(category.position) }}</div>
                 </div>
                 <div class="form-group">
-                    {{ form_widget(category.code, {'attr': {'class': 'form-control', 'placeholder': 'code'|trans({}, 'category')}}) }}
+                    {{ form_widget(category.code) }}
                     <div class="text-danger">{{ form_errors(category.code) }}</div>
                 </div>
                 <div class="form-group">
-                    {{ form_widget(category.name_fr, {'attr': {'class': 'form-control', 'id': 'name_fr', 'placeholder': 'name_fr'|trans({}, 'category')}}) }}
+                    {{ form_widget(category.name_fr) }}
                     <div class="text-danger">{{ form_errors(category.name_fr) }}</div>
                 </div>
                 <div class="form-group">
-                    {{ form_widget(category.name_en, {'attr': {'class': 'form-control', 'id': 'name_en', 'placeholder': 'name_en'|trans({}, 'category')}}) }}
+                    {{ form_widget(category.name_en) }}
                     <div class="text-danger">{{ form_errors(category.name_en) }}</div>
                 </div>
             </div>

@@ -43,18 +43,17 @@
         <div>Ajouter une catégorie :</div>
         {{ form_start(form) }}
             <div class="form-group">
-                {{ form_widget(form.code, {'attr': {'class': 'form-control', 'placeholder': 'code'|trans({}, 'category')}}) }}
+                {{ form_widget(form.code) }}
                 <div class="text-danger">{{ form_errors(form.code) }}</div>
             </div>
             <div class="form-group">
-                {{ form_widget(form.name_fr, {'attr': {'class': 'form-control', 'id': 'name_fr', 'placeholder': 'name_fr'|trans({}, 'category')}}) }}
+                {{ form_widget(form.name_fr) }}
                 <div class="text-danger">{{ form_errors(form.name_fr) }}</div>
             </div>
             <div class="form-group">
-                {{ form_widget(form.name_en, {'attr': {'class': 'form-control', 'id': 'name_en', 'placeholder': 'name_en'|trans({}, 'category')}}) }}
+                {{ form_widget(form.name_en) }}
                 <div class="text-danger">{{ form_errors(form.name_en) }}</div>
             </div>
-            <br/>
             <button type="submit" class="btn-add btn rounded-3 align-self-start">{{ 'add'|trans({}, 'actions') }}</button>
         {{ form_end(form) }}
     </div>

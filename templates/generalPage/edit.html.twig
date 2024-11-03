@@ -5,20 +5,19 @@
 {% block body %}
     {{ form_start(form) }}
         {{ form_errors(form) }}
-
         <div class="form-group">
             {{ form_label(form.code) }}
-            {{ form_widget(form.code, {'attr': {'class': 'form-control'}}) }}
+            {{ form_widget(form.code) }}
             <div class="text-danger">{{ form_errors(form.code) }}</div>
         </div>
         <div class="form-group">
-            {{ form_label(form.content_fr, null, {'label_attr': {'for': 'contentFr'}}) }}
-            {{ form_widget(form.content_fr, {'attr': {'class': 'form-control', 'id': 'contentFr'}}) }}
+            {{ form_label(form.content_fr) }}
+            {{ form_widget(form.content_fr) }}
             <div class="text-danger">{{ form_errors(form.content_fr) }}</div>
         </div>
         <div class="form-group">
-            {{ form_label(form.content_en, null, {'label_attr': {'for': 'contentEn'}}) }}
-            {{ form_widget(form.content_en, {'attr': {'class': 'form-control', 'id': 'contentEn'}}) }}
+            {{ form_label(form.content_en) }}
+            {{ form_widget(form.content_en) }}
             <div class="text-danger">{{ form_errors(form.content_en) }}</div>
         </div>
         <br/>
