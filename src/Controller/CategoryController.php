@@ -14,7 +14,7 @@ use App\Entity\Category;
 use App\Form\CategoryType;
 use App\Form\CategoryCollectionType;
 
-#[Route('/category')]
+#[Route('/admin/category')]
 class CategoryController extends AbstractController
 {
     #[Route('/list', name: 'app_category_list', methods: ['GET', 'POST'])]

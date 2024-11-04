@@ -13,7 +13,7 @@ use App\Entity\Page;
 use App\Repository\PageRepository;
 use App\Form\PageType;
 
-#[Route('/general-page')]
+#[Route('/admin/general-page')]
 class GeneralPageController extends AbstractController
 {
     #[Route('/list', name: 'app_general_page_list')]

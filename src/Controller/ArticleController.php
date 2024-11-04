@@ -18,7 +18,7 @@ use App\Repository\ArticleRepository;
 use App\Entity\Article;
 use App\Form\ArticleType;
 
-#[Route('/article')]
+#[Route('/admin/article')]
 class ArticleController extends AbstractController
 {
     #[Route('/list', name: 'app_article_list')]

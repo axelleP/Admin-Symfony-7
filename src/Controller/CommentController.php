@@ -12,7 +12,7 @@ use Symfony\Component\HttpFoundation\Request;
 use App\Entity\Comment;
 use App\Repository\CommentRepository;
 
-#[Route('/comment')]
+#[Route('/admin/comment')]
 class CommentController extends AbstractController
 {
     #[Route('/list', name: 'app_comment_list')]

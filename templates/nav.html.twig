@@ -9,7 +9,7 @@
             <li class="list-unstyled"><a class="{% if app.request.pathInfo == path('app_article_list') %}active{% endif %} link text-reset" href="{{ path('app_article_list') }}">Articles</a></li>
             <li class="list-unstyled"><a class="{% if app.request.pathInfo == path('app_comment_list') %}active{% endif %} link text-reset" href="{{ path('app_comment_list') }}">Commentaires</a></li>
             <br>
-            <li class="list-unstyled"><a class="link text-reset" href="{{ path('app_login') }}">{{ 'signout'|trans({}, 'actions') }}</a></li>
+            <li class="list-unstyled"><a class="link text-reset" href="{{ path('app_logout') }}">{{ 'signout'|trans({}, 'actions') }}</a></li>
         </ul>
     </nav>
 </aside>
