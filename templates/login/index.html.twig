@@ -29,7 +29,7 @@
                         <input type="password" class="form-control" id="password" name="_password" required>
                     </div>
                     <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
-                    <button id="btn-login" class="btn mx-auto d-block mt-5 fs-5 rounded-3" type="submit">Se connecter</button>
+                    <button id="btn-login" class="btn mx-auto d-block mt-5 fs-5 rounded-3" type="submit">{{ 'signin'|trans({}, 'actions') }}</button>
                 </form>
             </section>
         </main>
