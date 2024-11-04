@@ -6,31 +6,31 @@
     <table class="table table-responsive table-bordered w-auto">
         <tbody>
             <tr>
-                <th class="table-secondary">Catégorie</td>
+                <th class="table-secondary">{{ 'category'|trans({}, 'article') }}</td>
                 <td>{{ article.category.nameFr }}</td>
             </tr>
             <tr>
-                <th class="table-secondary">Date création</td>
+                <th class="table-secondary">{{ 'creation_date'|trans({}, 'article') }}</td>
                 <td>{{ article.createdAt|date('d/m/Y') }}</td>
             </tr>
             <tr>
-                <th class="table-secondary">Titre Fr</td>
+                <th class="table-secondary">{{ 'title_fr'|trans({}, 'article') }}</td>
                 <td>{{ article.titleFr }}</td>
             </tr>
             <tr>
-                <th class="table-secondary">Titre En</td>
+                <th class="table-secondary">{{ 'title_en'|trans({}, 'article') }}</td>
                 <td>{{ article.titleEn }}</td>
             </tr>
             <tr>
-                <th class="table-secondary">Contenu Fr</td>
+                <th class="table-secondary">{{ 'content_fr'|trans({}, 'article') }}</td>
                 <td>{{ article.contentFr|nl2br|raw }}</td>
             </tr>
             <tr>
-                <th class="table-secondary">Contenu En</td>
+                <th class="table-secondary">{{ 'content_en'|trans({}, 'article') }}</td>
                 <td>{{ article.contentEn|nl2br|raw }}</td>
             </tr>
             <tr>
-                <th class="table-secondary">Image</td>
+                <th class="table-secondary">{{ 'image'|trans({}, 'article') }}</td>
                     <td><img src="{{ asset(article.fullPathImage) }}"></td>
             </tr>
         </tbody>

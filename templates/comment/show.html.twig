@@ -6,23 +6,23 @@
     <table class="table table-responsive table-bordered w-auto">
         <tbody>
             <tr>
-                <th class="table-secondary">Date création</td>
+                <th class="table-secondary">{{ 'creation_date'|trans({}, 'comment') }}</td>
                 <td>{{ comment.createdAt|date('d/m/Y') }}</td>
             </tr>
             <tr>
-                <th class="table-secondary">Article</td>
+                <th class="table-secondary">{{ 'article'|trans({}, 'comment') }}</td>
                 <td>{{ comment.article.titleFr }}</td>
             </tr>
             <tr>
-                <th class="table-secondary">Pseudo</td>
+                <th class="table-secondary">{{ 'pseudo'|trans({}, 'comment') }}</td>
                 <td>{{ comment.pseudo }}</td>
             </tr>
             <tr>
-                <th class="table-secondary">Email</td>
+                <th class="table-secondary">{{ 'email'|trans({}, 'comment') }}</td>
                 <td>{{ comment.email }}</td>
             </tr>
             <tr>
-                <th class="table-secondary">Commentaire</td>
+                <th class="table-secondary">{{ 'comment'|trans({}, 'comment') }}</td>
                 <td>{{ comment.comment|nl2br|raw }}</td>
             </tr>
         </tbody>

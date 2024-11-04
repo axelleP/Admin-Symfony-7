@@ -6,15 +6,15 @@
     <table class="table table-responsive table-bordered w-auto">
         <tbody>
             <tr>
-                <th class="table-secondary">Nom</td>
+                <th class="table-secondary">{{ 'name'|trans({}, 'page') }}</td>
                 <td>{{ page.code|trans({}, 'page') }}</td>
             </tr>
             <tr>
-                <th class="table-secondary">Contenu FR</td>
+                <th class="table-secondary">{{ 'content_fr'|trans({}, 'page') }}</td>
                 <td>{{ page.contentFr|nl2br|raw }}</td>
             </tr>
             <tr>
-                <th class="table-secondary">Contenu EN</td>
+                <th class="table-secondary">{{ 'content_en'|trans({}, 'page') }}</td>
                 <td>{{ page.contentEn|nl2br|raw }}</td>
             </tr>
         </tbody>
