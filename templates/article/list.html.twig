@@ -23,12 +23,7 @@
                     <td class="text-center">{{ article.createdAt|date('d/m/Y') }}</td>
                     <td>{{ article.titleFr }}</td>
                     <td><a class="btn btn-link" href="{{ path('app_article_show', {id: article.id}) }}"><img class="icon-action-size" src="{{ asset('img/btn-see.svg') }}" alt="btn-see"/></a></td>
-                    <td>
-                        <form method="post" action="{{ path('app_article_list') }}">
-                            <input type="hidden" name="_token" value="{{ csrf_token('edit' ~ article.id) }}">
-                            <button class="btn btn-link" type="submit"><img class="icon-action-size" src="{{ asset('img/btn-edit.svg') }}" alt="btn-edit"/></button>
-                        </form>
-                    </td>
+                    <td><a class="btn btn-link"  href="{{ path('app_article_edit', {id: article.id}) }}"><img class="icon-action-size" src="{{ asset('img/btn-edit.svg') }}" alt="btn-edit"/></a></td>
                     <td>
                         <form method="post" action="{{ path('app_article_delete', {id: article.id}) }}" onsubmit="return confirm('Confirmez-vous la suppression de l\'article et de ses {{ article.comments|length }} commentaires(s) ?');">
                             <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ article.id) }}">
@@ -44,7 +39,7 @@
         {% include '_paginate.html.twig' with {'previous': previous, 'next': next, 'currentPage': currentPage, 'path': 'app_article_list', 'paginator': articles} %}
     {% endif %}
 
-    <a class="btn-add btn mt-2 rounded-3" href="{{ path('app_article_list') }}">{{ 'add'|trans({}, 'actions') }}</a>
+    <a class="btn-add btn mt-2 rounded-3" href="{{ path('app_article_new') }}">{{ 'add'|trans({}, 'actions') }}</a>
 {% endblock %}
 
 
