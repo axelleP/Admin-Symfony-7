@@ -12,7 +12,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Contracts\Translation\TranslatorInterface;
 use Symfony\Component\Validator\Constraints as Assert;
 
-use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use FOS\CKEditorBundle\Form\Type\CKEditorType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 
@@ -55,15 +55,16 @@ class ArticleType extends AbstractType
                     ]),
                 ],
                 'empty_data' => '',
+                'attr' => ['class' => 'form-control'],
                 'mapped' => false
             ])
-            ->add('content_fr', TextareaType::class, [
+            ->add('content_fr', CKEditorType::class, [
                 'required' => true,
                 'label' => $this->translator->trans('content_fr', [], 'article'),
                 'empty_data' => '',
                 'attr' => ['class' => 'form-control', 'rows' => 5, 'cols' => 40],
             ])
-            ->add('content_en', TextareaType::class, [
+            ->add('content_en', CKEditorType::class, [
                 'required' => true,
                 'label' => $this->translator->trans('content_en', [], 'article'),
                 'empty_data' => '',

@@ -9,7 +9,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 
 use Symfony\Contracts\Translation\TranslatorInterface;
 
-use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use FOS\CKEditorBundle\Form\Type\CKEditorType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 
 class PageType extends AbstractType
@@ -32,13 +32,13 @@ class PageType extends AbstractType
                 'disabled' => true,
                 'attr' => ['class' => 'form-control'],
             ])
-            ->add('content_fr', TextareaType::class, [
+            ->add('content_fr', CKEditorType::class, [
                 'label' => $this->translator->trans('content_fr', [], 'page'),
                 'required' => true,
                 'empty_data' => '',
                 'attr' => ['class' => 'form-control', 'rows' => 5, 'cols' => 40],
             ])
-            ->add('content_en', TextareaType::class, [
+            ->add('content_en', CKEditorType::class, [
                 'label' => $this->translator->trans('content_en', [], 'page'),
                 'required' => true,
                 'empty_data' => '',
