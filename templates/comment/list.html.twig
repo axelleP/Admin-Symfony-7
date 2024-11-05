@@ -2,15 +2,31 @@
 
 {% block title %}{{ parent() }}Liste commentaires{% endblock %}
 
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-table@1.23.5/dist/bootstrap-table.min.css">
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap-table@1.23.5/dist/bootstrap-table.min.js"></script>
+    <script src="{{ asset('js/bootstrap-table-init.js') }}"></script>
+{% endblock %}
+
 {% block body %}
     <div>Il y a {{ comments|length }} commentaires.</div>
 
-    <table class="table table-responsive table-bordered w-auto">
+    <table 
+        id="table"
+        data-toggle="table"
+        data-sortable="true"
+        class="table table-responsive table-bordered w-auto">
         <thead class="table-secondary">
             <tr>
-                <th scope="col">{{ 'creation_date'|trans({}, 'comment') }}</th>
-                <th scope="col">{{ 'article'|trans({}, 'comment') }}</th>
-                <th scope="col">{{ 'pseudo'|trans({}, 'comment') }}</th>
+                <th scope="col" data-field="createdAt" data-sortable="true">{{ 'creation_date'|trans({}, 'comment') }}</th>
+                <th scope="col" data-field="titleFr" data-sortable="true">{{ 'article'|trans({}, 'comment') }}</th>
+                <th scope="col" data-field="pseudo" data-sortable="true">{{ 'pseudo'|trans({}, 'comment') }}</th>
                 <th scope="col">{{ 'email'|trans({}, 'comment') }}</th>
                 <th scope="col">{{ 'comment'|trans({}, 'comment') }}</th>
                 <th scope="col">-</th>
@@ -38,6 +54,7 @@
     </table>
 
     {% if previous >= 0 or next < comments|length %}
+        <br>
         {% include '_paginate.html.twig' with {'previous': previous, 'next': next, 'currentPage': currentPage, 'path': 'app_comment_list', 'paginator': comments} %}
     {% endif %}
 {% endblock %}

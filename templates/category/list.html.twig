@@ -34,6 +34,7 @@
     </table>
 
     {% if previous >= 0 or next < categories|length %}
+        <br>
         {% include '_paginate.html.twig' with {'previous': previous, 'next': next, 'currentPage': currentPage, 'path': 'app_category_list', 'paginator': categories} %}
     {% endif %}
 

@@ -2,15 +2,31 @@
 
 {% block title %}{{ parent() }}Liste articles{% endblock %}
 
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-table@1.23.5/dist/bootstrap-table.min.css">
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap-table@1.23.5/dist/bootstrap-table.min.js"></script>
+    <script src="{{ asset('js/bootstrap-table-init.js') }}"></script>
+{% endblock %}
+
 {% block body %}
     <div>Il y a {{ articles|length }} articles.</div>
 
-    <table class="table table-responsive table-bordered w-auto">
+    <table 
+        id="table"
+        data-toggle="table"
+        data-sortable="true"
+        class="table table-responsive table-bordered w-auto">
         <thead class="table-secondary">
             <tr>
-                <th scope="col">{{ 'category'|trans({}, 'article') }}</th>
-                <th scope="col">{{ 'creation_date'|trans({}, 'article') }}</th>
-                <th scope="col">{{ 'title_fr'|trans({}, 'article') }}</th>
+                <th scope="col" data-field="category" data-sortable="true">{{ 'category'|trans({}, 'article') }}</th>
+                <th scope="col" data-field="creationDate" data-sortable="true">{{ 'creation_date'|trans({}, 'article') }}</th>
+                <th scope="col" data-field="titleFr" data-sortable="true">{{ 'title_fr'|trans({}, 'article') }}</th>
                 <th scope="col">-</th>
                 <th scope="col">-</th>
                 <th scope="col">-</th>
@@ -36,6 +52,7 @@
     </table>
 
     {% if previous >= 0 or next < articles|length %}
+        <br>
         {% include '_paginate.html.twig' with {'previous': previous, 'next': next, 'currentPage': currentPage, 'path': 'app_article_list', 'paginator': articles} %}
     {% endif %}
 
