@@ -5,9 +5,9 @@ Création d'une interface d'administration sous Symfony 7 :
 - consultation, ajout, modification et suppression de données
 - gestion du téléchargement et de la suppression d'une image pour les articles
 - système de pagination
+- liste des articles et des commentaires : possibilité de trier par colonne
+- formulaire pages et articles : saisie de texte avec CKeditor
 - ajout de fixtures
-
-D'autres fonctionnalités sont à venir.
 
 ## Images du site Web
 ### <ins>Connexion</ins>
@@ -26,10 +26,10 @@ D'autres fonctionnalités sont à venir.
 ![article - vue](https://github.com/user-attachments/assets/cddfbff6-6cc8-40e0-b52b-25ae31fcbef4)
 
 ### <ins>Article - Modification</ins>
-![article - modification](https://github.com/user-attachments/assets/c9320cce-40d6-4296-a0e6-1e1e99bd3779)
+![article - modification](https://github.com/user-attachments/assets/cc3a8bc3-2724-436c-94a7-3c0035dfcdb0)
 
 ### <ins>Commentaire - Liste</ins>
-![image](https://github.com/user-attachments/assets/5117ddb7-b451-4adc-8ac2-ee85f15865ee)
+![commentaire - liste](https://github.com/user-attachments/assets/29c213c3-5c0f-4c41-a959-add168732152)
 
 ### <ins>Commentaire - Vue</ins>
 ![commentaire - vue](https://github.com/user-attachments/assets/77e147fd-f527-4e0c-9840-889f2cbf23a6)
