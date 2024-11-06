@@ -1,0 +1,55 @@
+name: Run developement pipeline on Push
+
+on: #en condition réelle : évènement pull_request sur une branche dev
+  push:
+    branches: [ "main" ] 
+  workflow_dispatch: #permet le déclenchement manuel
+
+jobs:
+  test:
+    runs-on: ubuntu-latest #exécution du job sur la dernière version ubuntu
+
+    services:
+      mysql:
+        image: mysql:9.0
+        env:
+          MYSQL_ROOT_PASSWORD: ${{ secrets.MYSQL_ROOT_PASSWORD }}
+          MYSQL_DATABASE: ${{ secrets.MYSQL_DATABASE }}
+          MYSQL_USER: ${{ secrets.MYSQL_USER }}
+          MYSQL_PASSWORD: ${{ secrets.MYSQL_PASSWORD }}
+        ports:
+          - 3306:3306
+        options: --health-cmd="mysqladmin ping --silent" --health-interval=10s --health-timeout=5s --health-retries=5
+
+    steps: #étapes du job
+      - name: Récupération du code du projet
+        uses: actions/checkout@v4 
+
+      - name: Configuration PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.3.9' 
+
+      - name: Installation des bibliothèques Composer
+        run: composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
+
+      - name: Création du fichier .env
+        run: php -r "file_exists('.env.local') || copy('.env', '.env.local');"
+      - name: Configuration du .env.local
+        run: |
+          echo 'APP_NAME="Symfony 7 Admin"' >> .env.local
+          sed -i 's|^DATABASE_URL="postgresql://app:!ChangeMe!@127.0.0.1:5432/app?serverVersion=16&charset=utf8"|DATABASE_URL="mysql://${{ secrets.MYSQL_USER }}:${{ secrets.MYSQL_PASSWORD }}@127.0.0.1:3306/${{ secrets.MYSQL_DATABASE }}?serverVersion=8.0.27"|' .env.local
+          
+      - name: Création de la bdd avec les migrations
+        run: php bin/console doctrine:migrations:migrate
+
+      - name: Remplissage de la bdd
+        run: |
+          php bin/console doctrine:fixtures:load --append --group=page
+          php bin/console doctrine:fixtures:load --append --group=user
+          php bin/console doctrine:fixtures:load --append --group=category
+          php bin/console doctrine:fixtures:load --append --group=article
+          php bin/console doctrine:fixtures:load --append --group=comment
+
+      - name: Exécution des tests unitaires et d'intégrations
+        run: php bin/phpunit
