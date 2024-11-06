@@ -14,12 +14,12 @@
                 <span class="fs-4 fw-semibold">{{ appName }}</span>
             </header>
         
-            <section id="form-login" class="mx-auto d-flex flex-column justify-content-center border shadow bg-white mt-5">
+            <section id="section-login" class="mx-auto d-flex flex-column justify-content-center border shadow bg-white mt-5">
                 <h1 class="h3 text-center">Connexion</h1>
                 {% if error %}
                     <div class="text-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
                 {% endif %}
-                <form class="mt-5 fs-5" action="{{ path('app_login') }}" method="post">
+                <form id="form-login" class="mt-5 fs-5" action="{{ path('app_login') }}" method="post">
                     <div class="mb-3">
                         <label for="email" class="form-label">Email</label>
                         <input type="text" class="form-control" id="email" name="_username" value="{{ last_username }}" required>
