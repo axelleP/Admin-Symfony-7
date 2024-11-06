@@ -35,11 +35,12 @@ jobs:
 
       - name: Création du fichier .env
         run: php -r "file_exists('.env.local') || copy('.env', '.env.local');"
+        
       - name: Configuration du .env.local
         run: |
           echo 'APP_NAME="Symfony 7 Admin"' >> .env.local
           sed -i 's|^DATABASE_URL="postgresql://app:!ChangeMe!@127.0.0.1:5432/app?serverVersion=16&charset=utf8"|DATABASE_URL="mysql://${{ secrets.MYSQL_USER }}:${{ secrets.MYSQL_PASSWORD }}@127.0.0.1:3306/${{ secrets.MYSQL_DATABASE }}?serverVersion=8.0.27"|' .env.local
-          
+
       - name: Création de la bdd avec les migrations
         run: php bin/console doctrine:migrations:migrate
 
