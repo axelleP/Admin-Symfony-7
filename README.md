@@ -7,7 +7,9 @@ Création d'une interface d'administration sous Symfony 7 :
 - système de pagination
 - liste des articles et des commentaires : possibilité de trier par colonne
 - formulaire pages et articles : saisie de texte avec CKeditor
-- ajout de fixtures
+- création de fixtures
+- création d'un test fonctionnel
+- mise en place d'une pipeline pour automatiser les tests
 
 ## Images du site Web
 ### <ins>Connexion</ins>
