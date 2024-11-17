@@ -10,6 +10,7 @@ Création d'une interface d'administration sous Symfony 7 :
 - création de fixtures
 - création d'un test fonctionnel
 - mise en place d'une pipeline pour automatiser les tests
+- dockerisation du projet
 
 ## Images du site Web
 ### <ins>Connexion</ins>
